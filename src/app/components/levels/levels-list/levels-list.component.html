@@ -1,0 +1,9 @@
+<app-loading-animation *ngIf="!levels"></app-loading-animation>
+<div *ngIf="levels">
+    <p class="levels-main-title">Les niveaux disponibles | المستويات التعليمية المتوفرة </p>
+    <div class="levels-container col-8">
+        <ng-container *ngFor="let level of levels">
+            <a style="text-decoration: none;" [routerLink]="['/levels/', level.id, 'subjects']"><app-level-item [level]="level" ></app-level-item></a>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<app-loading-animation *ngIf="!level"></app-loading-animation>
+<div *ngIf="level">
+    <p *ngIf="level" class="level-title"> {{level.name}}</p>
+    <p class="subjects-main-title">Les matieres | المـــواد </p>
+    <div class="subjects-container col-8">
+        <ng-container *ngIf="level && level.subjects">
+            <ng-container  *ngFor="let subject of level.subjects">
+                <a style="text-decoration: none;"
+                [routerLink]="['/levels', levelId, 'subjects', subject.id, 'chapters']"><app-subject-item [subject]="subject"></app-subject-item></a>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+

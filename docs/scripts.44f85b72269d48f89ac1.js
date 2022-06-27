@@ -1,0 +1,1 @@
+function myFunction(){var a=document.getElementById("myTopnav");"top-nav col-12"===a.className?a.className+=" responsive":a.className="top-nav col-12"}

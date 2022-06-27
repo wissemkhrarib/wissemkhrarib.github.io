@@ -1,0 +1,30 @@
+<app-loading-animation *ngIf="!chapter"></app-loading-animation>
+<div *ngIf="chapter" class="chapter-main-container col-8">
+    <div class="chapter-container col-12">
+        <p class="chapter-title">{{chapter.name}}</p>
+        <br/>
+        <p class="chapter-lessons-number">Nombre de lessons: <span class="chapter-lessons-count">{{chapter.lessons.length}}</span></p>
+    </div>
+    <div class="lessons-main-container col-12">
+        <div class="lessons-container col-4">
+            <p class="lessons-list-title">Liste de lessons</p>
+            <ul class="lessons-list" >
+                <li class="lessons-list-item" *ngFor="let lesson of chapter.lessons; let index=index" (click)="changeCurrentLesson(index)"> 
+                    <span [ngClass]="lesson ==  currentLesson ? 'lesson-item-index-current' : 'lesson-item-index'" class="">{{index+1}}</span>
+                    <span [ngClass]="lesson ==  currentLesson ? 'lesson-item-title-current': 'lesson-item-title'">{{lesson.name}}</span></li>
+            </ul>
+        </div>
+        <div class="lesson-video-container col-7">
+            <p class="lesson-title">{{currentLesson.name}}</p>
+            <video class="lesson-video col-12" controls src="{{currentLesson.video}}"  controls controlsList="nodownload">
+            </video>
+            <div class="video-description">
+                <p class="video-description-main-title">Dans cette video, nous parlons des points suivants ...</p>
+                <hr/>
+                <ng-container>
+                    <p class="video-description-text" *ngFor="let description of currentLesson.descriptions">{{description.text}}</p>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<app-loading-animation *ngIf="!subject"></app-loading-animation>
+<div *ngIf="subject" class="subjects-container col-8">
+    <div class="subject-container col-12">
+        <img 
+        class="subject-img" 
+        src="https://res.cloudinary.com/dz8ads32s/{{subject.icon}}"
+        alt="subject-img"/>
+        <p class="subject-title">{{subject.name}}</p>
+        <br/>
+        <p class="subject-chapters-number">Nombre de chapitres: <span class="subject-chapters-count">{{subject.chapters.length}}</span></p>
+    </div>
+    <div class="col-12" *ngFor="let chapter of subject.chapters; let index=index">
+       <a style="text-decoration: none;"
+       [routerLink]="['/levels', levelId, 'subjects', subjectId, 'chapters', chapter.id, 'lessons']"><app-chapter-item [chapter]="chapter" [index]="index" ></app-chapter-item></a>
+    </div>
+</div>

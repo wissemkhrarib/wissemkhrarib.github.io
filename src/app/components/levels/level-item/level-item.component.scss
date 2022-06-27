@@ -1,0 +1,26 @@
+.level{
+    &-container{
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        &:hover{
+            box-shadow: 2px 1px 9px 4px rgb(53 43 198);
+        }
+    }
+    &-img{
+        width: 100px;
+        height: 100px;
+    }
+    &-title{
+        font-size: 30px;
+        font-weight: bold;
+        color: #3f51b5;
+        text-decoration: none;
+    }
+}

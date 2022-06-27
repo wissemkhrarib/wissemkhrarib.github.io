@@ -1,0 +1,28 @@
+.subject{
+    &-container{
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: #3f51b5 15px solid;
+        cursor: pointer;
+        &:hover{
+            box-shadow: 2px 1px 9px 4px rgb(53 43 198);
+        }
+    }
+    &-img{
+        width: 100px;
+        height: 100px;
+    }
+    &-title{
+        font-size: 30px;
+        font-weight: bold;
+        color: #3f51b5;
+        text-decoration: none;
+    }
+}
+

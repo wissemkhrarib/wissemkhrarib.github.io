@@ -1,0 +1,103 @@
+<div class="main-container col-8">
+
+    <div class="section-container col-12">
+        <p class="section-title"> منصة تعليمية مطابقة لبرنامج الدراسة في تونس ...<span>WissLearn</span> مرحبا بك في
+
+            <br /> <br /> باش تلقوا برشا دروس لأغلب المستويات: بكالوريا، ثانوي، أساسي
+        </p>
+        <ng-lottie [options]="options" class="col-5"></ng-lottie>
+
+    </div>
+    <div class="section-container col-12" *ngIf="subjects">
+        <p class="section-title"><span>... </span>هذه بعض المـــواد </p>
+        <div class="levels-container col-12">
+            <ng-container *ngIf="subjects">
+                <ng-container  *ngFor="let subject of subjects">
+                    <a style="text-decoration: none;"
+                    [routerLink]="['/levels', '1', 'subjects', subject.id, 'chapters']"><app-subject-item [subject]="subject"></app-subject-item></a>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <div class="section-container col-12">
+        <p class="section-title"> Voici la liste de lessons disponibles ... Cliquez sur la lesson que vous voulez voir
+            ... </p>
+        <button class="button-next" (click)="fetchNext(LessonsPageData.next)"
+            [disabled]="!LessonsPageData.next">next</button>
+        <button class="button-previous" (click)="fetchPrevious(LessonsPageData.previous)"
+            [disabled]="!LessonsPageData.previous">previous</button>
+        <div *ngIf="LessonsPageData" class="videos-grid col-12">
+            <div class="lesson-video-container-small col-3" *ngFor="let lesson of LessonsPageData.results">
+                <a style="text-decoration: none;"
+                    [routerLink]="['/levels', lesson.chapter.subjects[0].levels[0].id, 'subjects', lesson.chapter.subjects[0].id, 'chapters', lesson.chapter.id, 'lessons', lesson.num]">
+                    <img class="lesson-thumbnail" src="https://res.cloudinary.com/dz8ads32s/{{lesson.thumbnail}}"
+                        alt="thumbnail" /></a>
+                <p class="lesson-title">{{lesson.name}}</p>
+                <p class="chapter-title">{{lesson.chapter.name}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-container col-12">
+        <p class="section-title"> PDF disponible avec chaque lesson de cours et chaque exercice </p>
+        <div class="pdf-container col-11">
+            <pdf-viewer class="col-12" src="assets/PDFs/onde_exercice.pdf" [render-text]="true" [original-size]="false">
+            </pdf-viewer>
+            <p class="pdf-title">Correction exercice - les ondes progressives</p>
+        </div>
+        <div class="pdf-container col-11">
+            <pdf-viewer class="col-12" src="assets/PDFs/ph_cours.pdf" [render-text]="true" [original-size]="false"></pdf-viewer>
+            <p class="pdf-title">Cours - PH de solutions aqueuses</p>
+
+        </div>
+
+    </div>
+    <div class="section-container col-12">
+        <p class="section-title"><span>Youtube </span>بعض الدروس الموجودة في المنصة و في قناتنا على </p>
+        <br />
+        <div class="lessons-examples-container col-11">
+            <div class="lesson-example-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/n3FOED3dTdI"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                <p class="lesson-example-title">Physiques - Bacs scientifiques - qu'est-ce qu'une onde ?</p>
+
+            </div>
+            <div class="lesson-example-container col-12">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cxIA4AHlNXk"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                <p class="lesson-example-title">Informatique - Bacs scientifiques - Les bases de Python</p>
+
+            </div>
+
+            <div class="lesson-example-container col-12">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/i0rRpQcdnGs"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                <p class="lesson-example-title">Physiques - Bacs scientifiques - Exercice PH</p>
+            </div>
+        </div>
+    </div>
+    <div class="section-container col-12">
+        <p class="section-title"> ... <span>Facebook </span>تابعنا على </p>
+
+        <div class="facebook-posts col-11">
+            <iframe class="facebook-post"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D446581963861535%26id%3D160550082464726&show_text=true&width=500"
+                class="col-6" height="700" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <iframe class="facebook-post"
+                src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D445826277270437%26id%3D160550082464726&show_text=true&width=500"
+                class="col-6" height="700" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+    </div>
+
+</div>
